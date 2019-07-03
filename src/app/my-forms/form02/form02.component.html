@@ -1,0 +1,26 @@
+<div class="container">
+    <form #formulario>
+  <div class="form-group">
+  <label for="exampleInputEmail1">Email address</label>
+  <input type="text" class="form-control" #inputEmail aria-describedby="emailHelp" [placeholder]='placeholder.username'>
+  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+  <label for="exampleInputPassword1">Password</label>
+  <input type="password" class="form-control" #inputPassword [placeholder]='placeholder.userpass'>
+  </div>
+
+  <button type="submit" class="btn btn-primary" (click)='recibirDatos ($event, formulario)'>Submit</button>
+  </form></div>
+
+  <ng-container *ngIf="(user.getUsername() >'' && user.getPassword() > ''); else faltandatos">
+      <div class="text-center">id : <strong>{{user.getId()}}</strong></div>
+     <div class="text-center">Nombre : <strong>{{user.getUsername()}}</strong></div>
+      <div class="text-center"> Password: <strong>{{user.getPassword()}}</strong></div>
+
+  </ng-container>
+
+  <ng-template #faltandatos>
+    <p class="text-center"> Falta usuario, password o ambos</p>
+  </ng-template>
+
