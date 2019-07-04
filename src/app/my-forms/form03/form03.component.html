@@ -1,0 +1,74 @@
+<div class="container">
+  <h1> Tercer formulario</h1>
+  <form (change)="checkButton()">
+      <div class="form-group">
+        <label for="realName">Nombre real:</label>
+        <input type="text" class="form-control" id="realName" name="realName" #realNameField
+        [placeholder]="placeholder.realName"
+        [(ngModel)]="userData.realName">
+
+      </div>
+      <div class="form-group">
+          <label for="userName">Nombre de Usuario:</label>
+          <input type="text" class="form-control" id="userName" name="userName" #userNameField
+          [placeholder]="placeholder.userName"
+          [(ngModel)]="userData.userName">
+      </div>
+      <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" class="form-control" id="password" name="password" #passwordField
+          [placeholder]="placeholder.password"
+          [(ngModel)]="userData.password">
+      </div>
+
+      <div class="form-group">
+          <label for="confirmUserPass">Confirm Password:</label>
+          <input type="password" class="form-control" id="confirmUserPass" name="confirmUserPass" #confirmUserPassField
+          [placeholder]="placeholder.confirmUserPass"
+          [(ngModel)]="userData.confirmUserPass">
+      </div>
+      <div class="form-group">
+          <label for="userEmail">Email:</label>
+          <input type="email" class="form-control" id="userEmail" name="userEmail" #userEmailField
+          [placeholder]="placeholder.userEmail"
+          [(ngModel)]="userData.userEmail">
+      </div>
+      <div class="form-group">
+        <label>Continente:</label>
+        <select class="form-control" name="userContinent"
+          [(ngModel)]="userData.continent"
+        >
+          <option *ngFor="let continent of continents"
+            [value]="continent.value"
+            [selected]="continent.selected"
+            [disabled]="continent.disabled"
+          >{{continent.text}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>
+        <input type="radio" class="form-control" #{{genders.H.id}}
+          [value]="genders.H.value"
+          [name]="genders.H.name"
+          [checked]="genders.H.checked"
+          [(ngModel)]="userData.gender"
+          >{{genders.H.label}}
+        </label>
+        <label>
+        <input type="radio" class="form-control" #{{genders.M.id}}
+          [value]="genders.M.value"
+          [name]="genders.M.name"
+          [checked]="genders.M.checked"
+          [(ngModel)]="userData.gender"
+          >{{genders.M.label}}
+        </label>
+        <div class="form-group">
+            <label>Mayor de edad:
+            <input type="checkbox" name="user18" #upto18 value="true" [(ngModel)]="userData.upTo18">
+            </label>
+          </div>
+          <input type="button" (click)="saveUser()" class="btn btn-dark" #sendbutton value="Aceptar" [disabled]="botonDesactivado">
+        </div>
+    </form>
+    {{ user | json}}<br>
+</div>
